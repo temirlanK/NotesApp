@@ -1,0 +1,63 @@
+<div class="jumbotron">
+  <h1 class="display-3">
+    Hello, world!
+  </h1>
+  <p class="lead">
+    This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information
+  </p>
+  <hr class="m-y-d">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">
+      Learn More
+    </a>
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <form (ngSubmit)="createNote(note); noteForm.reset()"
+    #noteForm='ngForm'>
+      <div class="form-group">
+        <label for="note-title">
+          <h3>
+            Note Title
+          </h3>
+        </label>
+        <input type="text"
+        class="form-control" id="title" 
+        required name="title" placeholder="Note Title"
+        #title='ngModel'
+        [(ngModel)]='note.title'>
+        <div [hidden]='title.valid || title.pristine'
+        class="alert alert-danger">
+          Title of the note is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">
+          <h3>
+            Describe Your Note
+          </h3>
+        </label>
+        <textarea 
+        class="form-control" id="description" required name="description" 
+        #description='ngModel'
+        [(ngModel)]='note.description'
+        rows="3"></textarea>
+        <div [hidden]='description.valid || description.pristine'
+        class="alert alert-danger">
+          Description of the note is required
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!noteForm.form.valid" [hidden]="submitted">Post Note</button>
+
+      <div [hidden]="!submitted" class="alert alert-success" role="alert">
+        Your note has been successfully created
+        <a class="alert-link"
+        routerLink="/notes">View all Notes</a>  
+      </div>
+    </form>
+  </div>
+</div>

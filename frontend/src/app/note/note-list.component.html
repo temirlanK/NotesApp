@@ -1,0 +1,46 @@
+<div class="ui four stackable cards">
+  <div class="card" *ngFor="let note of notes">
+    <a (click)="goToShow(note)">
+      <div class="card-block">
+        <h3 class="card-title">
+          {{note.title}}
+        </h3>
+        <p>
+          <small>
+            Last Updated: {{note.updated_at | date: 'medium'}}
+          </small>
+        </p>
+        <p class="card-text">
+          {{note.description}}
+        </p>
+        <a class="btn btn-primary">View Note</a>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- <div class="note-list" *ngFor="let note of notes">
+  <a (click)="goToShow(note)">
+  <div>
+    {{note.title}}
+  </div>
+  <small>
+    <strong>
+      Note ID:
+    </strong>
+    {{note.id}}
+  </small>
+  
+  <p>
+    <small>
+      Last Updated: {{note.updated_at | date: 'medium'}}
+    </small>
+  </p>
+
+  <div>
+    <p>
+      {{note.description}}
+    </p>
+  </div>
+  </a>
+</div> -->
